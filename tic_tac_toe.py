@@ -11,7 +11,7 @@ class Player(NamedTuple):
     label: str
     color: str
     
-BOARD_SIZE = 3
+BOARD_SIZE = 5
 DEFAULT_PLAYERS = (
     Player(label="X", color="blue"),
     Player(label="O", color="green"),
@@ -54,7 +54,7 @@ def play(self, event):
             self._update_button(clicked_btn)
             self._game.process_move(move)
             if self._game.is_tied():
-                self._update_display(msg="Tied game!", color="red")
+                self._update_display(msg="Tied game!", color="purple")
             elif self._game.has_winner():
                 self._highlight_cells()
                 msg = f'Player "{self._game.current_player.label}" won!'
@@ -190,8 +190,8 @@ class TicTacToeBoard(tk.Tk):
                     text="",
                     font=font.Font(size=36, weight="bold"),
                     fg="black",
-                    width=3,
-                    height=2,
+                    width=4,
+                    height=3,
                     highlightbackground="lightblue",
                 )
                 self._cells[button] = (row, col)
